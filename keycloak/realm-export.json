@@ -1,0 +1,62 @@
+{
+  "realm": "myrealm",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "accessTokenLifespan": 300,
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 36000,
+  "roles": {
+    "realm": [
+      {
+        "name": "app-user",
+        "description": "Grants access to the protected /app route of the demo SPA"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "react-spa",
+      "name": "Demo React SPA",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "rootUrl": "http://localhost:3000",
+      "baseUrl": "http://localhost:3000",
+      "redirectUris": ["http://localhost:3000/*"],
+      "webOrigins": ["http://localhost:3000"],
+      "fullScopeAllowed": true,
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:3000/*"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "user",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Demo",
+      "lastName": "User",
+      "email": "user@example.com",
+      "credentials": [{ "type": "password", "value": "user", "temporary": false }],
+      "realmRoles": ["app-user"]
+    },
+    {
+      "username": "guest",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Guest",
+      "lastName": "NoRole",
+      "email": "guest@example.com",
+      "credentials": [{ "type": "password", "value": "guest", "temporary": false }],
+      "realmRoles": []
+    }
+  ]
+}

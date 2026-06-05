@@ -1,0 +1,19 @@
+node_modules
+dist
+.env
+.env.local
+coverage
+*.log
+.DS_Store
+
+# TypeScript incremental build info - must never be committed
+*.tsbuildinfo
+
+# Safety net: TS is configured with noEmit, but guard against accidental JS
+# emitted next to sources (which Vite would resolve before the .ts/.tsx).
+/src/**/*.js
+/src/**/*.js.map
+/src/**/*.d.ts
+!/src/vite-env.d.ts
+vite.config.js
+vite.config.d.ts
